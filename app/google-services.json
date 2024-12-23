@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "621886678878",
+    "firebase_url": "https://todoapp-20f82-default-rtdb.firebaseio.com",
+    "project_id": "todoapp-20f82",
+    "storage_bucket": "todoapp-20f82.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621886678878:android:2ce795a6c5cb4e4fa251cf",
+        "android_client_info": {
+          "package_name": "com.elo.todo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcyPFnkBKKEUSvJpIQD2CKkvPQ6c8yKUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
