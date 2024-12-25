@@ -17,6 +17,7 @@ import com.todo.controller.ToDoController
 import com.todo.model.ToDoItem
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete // Import Delete icon
+import com.todo.utils.formatTimestamp
 
 @OptIn(ExperimentalMaterial3Api::class) // Eğer deneysel API kullanıyorsanız, uyarı için bu satırı ekleyebilirsiniz.
 @Composable
@@ -92,35 +93,46 @@ fun ToDoScreen(controller: ToDoController) {
                         .padding(vertical = 8.dp)
                         .background(MaterialTheme.colorScheme.surface),
                     shape = RoundedCornerShape(10.dp),
-                    elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp) // Doğru kullanım
+                    elevation = CardDefaults.elevatedCardElevation(defaultElevation = 4.dp)
                 ) {
-                    Row(
+                    Column( // Row yerine Column kullanıyoruz
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(16.dp),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalArrangement = Arrangement.Center
                     ) {
+                        // Başlık (Notun kendisi)
                         Text(
                             text = todo.title,
-                            style = MaterialTheme.typography.bodyLarge, // body1 yerine
-                            modifier = Modifier.weight(1f)
+                            style = MaterialTheme.typography.bodyLarge,
+                            modifier = Modifier.padding(bottom = 8.dp)
                         )
 
-                        IconButton(onClick = {
+                        // Tarih Gösterimi
+                        Text(
+                            text = "Oluşturulma Tarihi: ${formatTimestamp(todo.timestamp)}", // formatTimestamp fonksiyonu çağırılıyor
+                            style = MaterialTheme.typography.bodySmall,
+                            color = Color.Gray
+                        )
+                    }
+
+                    IconButton(
+                        onClick = {
                             controller.deleteToDoItem(todo.id) {
                                 Toast.makeText(context, "To-Do silindi!", Toast.LENGTH_SHORT).show()
                             }
-                        }) {
-                            Icon(
-                                imageVector = Icons.Default.Delete,
-                                contentDescription = "Sil",
-                                tint = MaterialTheme.colorScheme.error
-                            )
-                        }
+                        },
+                        modifier = Modifier.align(Alignment.End)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Delete,
+                            contentDescription = "Sil",
+                            tint = MaterialTheme.colorScheme.error
+                        )
                     }
                 }
             }
         }
     }
 }
+
