@@ -40,7 +40,7 @@ fun ToDoScreen(controller: ToDoController) {
     ) {
         // Başlık Alanı
         Text(
-            text = "To-Do Listesi",
+            text = "To-Do List",
             style = MaterialTheme.typography.headlineMedium, // h5 yerine
             modifier = Modifier.padding(bottom = 16.dp)
         )
@@ -135,4 +135,3 @@ fun ToDoScreen(controller: ToDoController) {
         }
     }
 }
-
